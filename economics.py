@@ -1,6 +1,8 @@
+from marginal_utility_product import MarginalUtilityProduct
+
 class Economics:
     """
-    Calculates midpoint formula used for own-price elasticity
+    Calculates midpoint formula used for own-price elasticity (own price elasticity)
     """
     @staticmethod
     def midpoint(q1,q2,p1,p2):
@@ -56,6 +58,37 @@ class Economics:
     def mu_p(mu1,mu2,price):
         return (mu2 - mu1) / price
 
+    @staticmethod
+    def optimal_quantity(budget: float, mu_1: MarginalUtilityProduct, mu_2: MarginalUtilityProduct):
+        remaining_budget = budget
+        while remaining_budget >= min(mu_1.price, mu_2.price):
+            if mu_1.get_mu_per_price() == mu_2.get_mu_per_price():
+                if remaining_budget >= mu_1.price + mu_2.price:
+                    mu_1.add_quantity()
+                    mu_2.add_quantity()
+                elif mu_2.get_mu_per_price() > mu_1.get_mu_per_price() and budget >= mu_2.price:
+                    mu_2.add_quantity()
+                else:
+                    mu_1.add_quantity()
+            elif mu_2.get_mu_per_price() > mu_1.get_mu_per_price() and budget >= mu_2.price:
+                mu_2.add_quantity()
+            else:
+                mu_1.add_quantity()
+            remaining_budget = budget - (mu_1.gross() + mu_2.gross())
+        
+        quantities = {
+            mu_1.name: mu_1.quantity,
+            mu_2.name: mu_2.quantity
+        }
+
+        return { 
+            "total_spent": mu_1.gross() + mu_2.gross(),
+            "quantities": quantities    
+        }
+                    
+                    
+
+
     """
     Average Product of Labour
     """
@@ -110,7 +143,9 @@ class Economics:
     def atc(fixed_costs, variable_costs, total_output):
         afc = Economics.afc(fixed_costs, total_output)
         avc = Economics.avc(variable_costs, total_output)
-        return afc + avc
+        atc = afc + avc
+        tc = fixed_costs + variable_costs
+        return { "Average total cost": atc, "Total cost": tc }
 
     """
     Get a cost given an ATC, another cost and total output
@@ -156,7 +191,18 @@ class Economics:
         ar = Economics.ar(tr, total_output)
         return { "Total revenue": tr, "Average Revenue": ar }
 
-    
+    """
+    Marginal Revenue
+    Change in Total Revenue / Change in Total Output 
+    """
+    @staticmethod
+    def marginal_revenue(revenue_1,revenue_2,output_1,output_2):
+        return Economics.slope(revenue_1,revenue_2,output_1,output_2)
+
+
+
+
+        
 
     
 
