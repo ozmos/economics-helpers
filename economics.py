@@ -199,6 +199,39 @@ class Economics:
     def marginal_revenue(revenue_1,revenue_2,output_1,output_2):
         return Economics.slope(revenue_1,revenue_2,output_1,output_2)
 
+    """
+    Calculate the number of firms in a perfect competition
+    """
+    @staticmethod
+    def number_of_firms_in_perfect_competition(quantity_of_market_demand, quantity_produced):
+        return quantity_of_market_demand / quantity_produced
+
+    """
+    Calculate short run loss based on changing demand in
+    perfect competition
+    ----
+    (Average cost per unit - current price) * quantity produced
+    """
+    @staticmethod
+    def short_run_loss(average_cost_per_unit, current_unit_price, quantity_produced):
+        return (average_cost_per_unit - current_unit_price) * quantity_produced
+
+    """
+    Calculate short profit loss based on changing demand in
+    perfect competition
+    ----
+    (Average cost per unit - current price) * quantity produced
+    profit/loss = (P-ATC)xQ
+    """
+    @staticmethod
+    def short_run_profitability(average_cost_per_unit, current_unit_price, quantity_produced):
+        return (current_unit_price - average_cost_per_unit) * quantity_produced
+
+
+
+
+
+
 
 
 
