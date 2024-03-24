@@ -1,4 +1,4 @@
-from economics import Economics
+from micro_economics import Economics
 from marginal_utility_product import MarginalUtilityProduct
 
 def test_1():

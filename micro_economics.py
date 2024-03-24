@@ -1,6 +1,6 @@
 from marginal_utility_product import MarginalUtilityProduct
 
-class Economics:
+class MicroEconomics:
     """
     Calculates midpoint formula used for own-price elasticity (own price elasticity)
     """
