@@ -1,6 +1,6 @@
 from marginal_utility_product import MarginalUtilityProduct
 
-class MicroEconomics:
+class Micro:
     """
     Calculates midpoint formula used for own-price elasticity (own price elasticity)
     """
@@ -49,7 +49,7 @@ class MicroEconomics:
 
     @staticmethod
     def marginal_utility_per_the_price(u1,u2,q1,q2,price):
-        return Economics.marginal_utility(u1,u2,q1,q2) / price
+        return Micro.marginal_utility(u1,u2,q1,q2) / price
 
     """
     As above but used when marginal utility is already provided
@@ -113,10 +113,10 @@ class MicroEconomics:
         decrease_announced = False
         for i, item in enumerate(labour_total_products):
             prev = 0 if i == 0 else labour_total_products[i - 1][1]
-            curr_mpl = Economics.mpl(prev,item[1],1,2)
+            curr_mpl = Micro.mpl(prev,item[1],1,2)
             decrease = prev_mpl > curr_mpl
             prev_mpl = curr_mpl
-            print(f"MPL at {item[0]} workers: {Economics.mpl(prev,item[1],1,2)}")
+            print(f"MPL at {item[0]} workers: {Micro.mpl(prev,item[1],1,2)}")
             if decrease and not decrease_announced:
                 print(f"MPL decreased after {labour_total_products[i-1][0]} labourers")
                 decrease_announced = True
@@ -141,8 +141,8 @@ class MicroEconomics:
     """
     @staticmethod
     def atc(fixed_costs, variable_costs, total_output):
-        afc = Economics.afc(fixed_costs, total_output)
-        avc = Economics.avc(variable_costs, total_output)
+        afc = Micro.afc(fixed_costs, total_output)
+        avc = Micro.avc(variable_costs, total_output)
         atc = afc + avc
         tc = fixed_costs + variable_costs
         return { "Average total cost": atc, "Total cost": tc }
@@ -187,8 +187,8 @@ class MicroEconomics:
         if total_output is None:
             total_output = quantity
             
-        tr = Economics.tr(price, quantity)
-        ar = Economics.ar(tr, total_output)
+        tr = Micro.tr(price, quantity)
+        ar = Micro.ar(tr, total_output)
         return { "Total revenue": tr, "Average Revenue": ar }
 
     """
@@ -197,7 +197,7 @@ class MicroEconomics:
     """
     @staticmethod
     def marginal_revenue(revenue_1,revenue_2,output_1,output_2):
-        return Economics.slope(revenue_1,revenue_2,output_1,output_2)
+        return Micro.slope(revenue_1,revenue_2,output_1,output_2)
 
     """
     Calculate the number of firms in a perfect competition

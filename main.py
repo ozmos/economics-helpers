@@ -1,2 +1,2 @@
-from micro_economics import MicroEconomics
-from macro_economics import MacroEconomics
+from micro_economics import Micro
+from macro_economics import Macro

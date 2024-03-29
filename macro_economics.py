@@ -1,4 +1,4 @@
-class MacroEconomics:
+class Macro:
     """
     Calculate the inflation factor for a given period of time.
     """
@@ -19,7 +19,7 @@ class MacroEconomics:
     """
     @staticmethod
     def expenditure_formula(consumption,investment,government_spending,exports,imports):
-        return MacroEconomics.aggregate_demand(consumption,investment,government_spending,exports,imports)
+        return Macro.aggregate_demand(consumption,investment,government_spending,exports,imports)
     
   
     """
@@ -36,4 +36,4 @@ class MacroEconomics:
     """
     @staticmethod
     def mpc_spending_effect(spending,mpc):
-        return spending * MacroEconomics.consumption_multiplier(mpc)
+        return spending * Macro.consumption_multiplier(mpc)
